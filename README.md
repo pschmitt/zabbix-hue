@@ -1,0 +1,1 @@
+# Philips Hue Zabbix Template

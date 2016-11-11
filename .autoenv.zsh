@@ -1,0 +1,1 @@
+workon zabbix-hue
