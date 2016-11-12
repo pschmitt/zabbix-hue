@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import argparse
+import ConfigParser
 import json
 import zhue
 
@@ -53,11 +54,31 @@ def parse_args():
     return parser.parse_args()
 
 
-def __connect(username, hostname=None):
-    if hostname:
-        return zhue.Bridge(hostname=hostname, username=username)
+def read_config(filename='hue-credentials.conf', section='philips-hue'):
+    config = ConfigParser.ConfigParser(
+        {
+            'hostname': None,
+            'username': None
+        }
+    )
+    config.read(filename)
+    h = config.get(section, 'hostname')
+    u = config.get(section, 'username')
+    return h, u
+
+
+
+def __connect(hostname=None, username=None):
+    if not hostname and not username:
+        h, u = read_config()
     else:
-        return zhue.Bridge.discover(username=username)
+        h = hostname
+        u = username
+    # print('Connect to {} as {}'.format(h, u))
+    if h:
+        return zhue.Bridge(hostname=h, username=u)
+    else:
+        return zhue.Bridge.discover(username=u)
 
 
 def __print_hue_ids(hue_ids):
@@ -68,13 +89,13 @@ def __print_hue_ids(hue_ids):
 
 
 def battery_discover():
-    b = __connect(hostname=hostname, username=username)
+    b = __connect()
     hue_ids = [x.hue_id for x in b.sensors if hasattr(x.config, 'battery')]
     return __print_hue_ids(hue_ids)
 
 
 def battery_read(hue_id=None):
-    b = __connect(hostname=hostname, username=username)
+    b = __connect()
     if hue_id:
         data = [b.sensor(hue_id=hue_id).config.battery]
     else:
@@ -84,13 +105,13 @@ def battery_read(hue_id=None):
 
 
 def temperature_discover():
-    b = __connect(hostname=hostname, username=username)
+    b = __connect()
     hue_ids = [x.hue_id for x in b.temperature_sensors]
     return __print_hue_ids(hue_ids)
 
 
 def temperature_read(hue_id=None):
-    b = __connect(hostname=hostname, username=username)
+    b = __connect()
     if hue_id:
         data = [b.sensor(hue_id=hue_id).temperature]
     else:
@@ -100,13 +121,13 @@ def temperature_read(hue_id=None):
 
 
 def light_level_discover():
-    b = __connect(hostname=hostname, username=username)
+    b = __connect()
     hue_ids = [x.hue_id for x in b.light_level_sensors]
     return __print_hue_ids(hue_ids)
 
 
 def light_level_read(hue_id=None):
-    b = __connect(hostname=hostname, username=username)
+    b = __connect()
     if hue_id:
         data = [b.sensor(hue_id=hue_id).light_level]
     else:
