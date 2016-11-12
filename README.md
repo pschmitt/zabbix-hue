@@ -1,5 +1,8 @@
 # Philips Hue Zabbix Template
 
+This template allows the monitoring of the temperature, light and battery levels
+measured by Hue motion sensors (and other devices).
+
 ## Installation
 
 ### Dependencies
