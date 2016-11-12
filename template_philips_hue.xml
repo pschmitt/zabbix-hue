@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2016-11-12T11:23:59Z</date>
+    <date>2016-11-12T11:46:25Z</date>
     <groups>
         <group>
             <name>Philips Hue</name>
@@ -154,7 +154,7 @@
                     </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Battery Level on sensor {#HUE_ID}</name>
+                            <name>Hue Battery Level on sensor {#HUE_ID}</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -269,7 +269,7 @@
                     <trigger_prototypes/>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Light Level on {#HUE_ID}</name>
+                            <name>Hue Light Level on sensor {#HUE_ID}</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -384,7 +384,7 @@
                     <trigger_prototypes/>
                     <graph_prototypes>
                         <graph_prototype>
-                            <name>Temperature on {#HUE_ID}</name>
+                            <name>Hue Temperature on sensor {#HUE_ID}</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
