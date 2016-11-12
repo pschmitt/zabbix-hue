@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2016-11-12T09:18:40Z</date>
+    <date>2016-11-12T11:23:59Z</date>
     <groups>
         <group>
             <name>Philips Hue</name>
@@ -25,7 +25,7 @@
             <items/>
             <discovery_rules>
                 <discovery_rule>
-                    <name>Battery discovery</name>
+                    <name>Hue Battery discovery</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -189,7 +189,7 @@
                     <host_prototypes/>
                 </discovery_rule>
                 <discovery_rule>
-                    <name>Light Level discovery</name>
+                    <name>Hue Light Level discovery</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -304,7 +304,7 @@
                     <host_prototypes/>
                 </discovery_rule>
                 <discovery_rule>
-                    <name>Temperature discovery</name>
+                    <name>Hue Temperature discovery</name>
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
