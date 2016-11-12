@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2016-11-11T21:58:39Z</date>
+    <date>2016-11-12T08:32:11Z</date>
     <groups>
         <group>
             <name>Philips Hue</name>
@@ -58,7 +58,7 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Battery Level on {#HUE_ID}</name>
+                            <name>Battery Level on sensor $1</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -92,7 +92,11 @@
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications/>
+                            <applications>
+                                <application>
+                                    <name>Philips Hue</name>
+                                </application>
+                            </applications>
                             <valuemap/>
                             <logtimefmt/>
                             <application_prototypes/>
@@ -169,7 +173,7 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Light Level on {#HUE_ID}</name>
+                            <name>Light Level on sensor $1</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -203,7 +207,11 @@
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications/>
+                            <applications>
+                                <application>
+                                    <name>Philips Hue</name>
+                                </application>
+                            </applications>
                             <valuemap/>
                             <logtimefmt/>
                             <application_prototypes/>
@@ -280,7 +288,7 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Temperature on sensor {#HUE_ID}</name>
+                            <name>Temperature on sensor $1</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -314,7 +322,11 @@
                             <port/>
                             <description/>
                             <inventory_link>0</inventory_link>
-                            <applications/>
+                            <applications>
+                                <application>
+                                    <name>Philips Hue</name>
+                                </application>
+                            </applications>
                             <valuemap/>
                             <logtimefmt/>
                             <application_prototypes/>
