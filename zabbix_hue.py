@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import argparse
 import ConfigParser
 import json
+import os
 import zhue
 
 
@@ -54,13 +55,16 @@ def parse_args():
     return parser.parse_args()
 
 
-def read_config(filename='hue-credentials.conf', section='philips-hue'):
+def read_config(filename='/etc/zabbix/bin/hue-credentials.conf',
+                section='philips-hue'):
     config = ConfigParser.ConfigParser(
         {
             'hostname': None,
             'username': None
         }
     )
+    if not os.path.isfile(filename):
+        filename = os.path.basename(filename)
     config.read(filename)
     h = config.get(section, 'hostname')
     u = config.get(section, 'username')
@@ -84,7 +88,7 @@ def __connect(hostname=None, username=None):
 def __print_hue_ids(hue_ids):
     json_data = {'data':[]}
     for hid in hue_ids:
-        json_data['data'].append({'#HUE_ID': hid})
+        json_data['data'].append({'{#HUE_ID}': hid})
     print(json.dumps(json_data))
 
 
