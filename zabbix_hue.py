@@ -78,7 +78,6 @@ def __connect(hostname=None, username=None):
     else:
         h = hostname
         u = username
-    # print('Connect to {} as {}'.format(h, u))
     if h:
         return zhue.Bridge(hostname=h, username=u)
     else:
