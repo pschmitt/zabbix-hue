@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2016-11-12T08:32:11Z</date>
+    <date>2016-11-12T09:18:40Z</date>
     <groups>
         <group>
             <name>Philips Hue</name>
@@ -30,7 +30,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>hue.battery.discover</key>
-                    <delay>30</delay>
+                    <delay>3600</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -64,7 +64,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>hue.battery[{#HUE_ID}]</key>
-                            <delay>30</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -102,7 +102,56 @@
                             <application_prototypes/>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes/>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{Philips Hue:hue.battery[{#HUE_ID}].last()}&lt;20</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Battery below 20% on sensor {#HUE_ID}</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>2</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Philips Hue:hue.battery[{#HUE_ID}].last()}&lt;50</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Battery below 50% on sensor {#HUE_ID}</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>1</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{Philips Hue:hue.battery[{#HUE_ID}].last()}&lt;10</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>Battery low on sensor {#HUE_ID}</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description/>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                    </trigger_prototypes>
                     <graph_prototypes>
                         <graph_prototype>
                             <name>Battery Level on sensor {#HUE_ID}</name>
@@ -145,7 +194,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>hue.light_level.discover</key>
-                    <delay>30</delay>
+                    <delay>3600</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -179,7 +228,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>hue.light_level[{#HUE_ID}]</key>
-                            <delay>30</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -260,7 +309,7 @@
                     <snmp_community/>
                     <snmp_oid/>
                     <key>hue.temperature.discover</key>
-                    <delay>30</delay>
+                    <delay>3600</delay>
                     <status>0</status>
                     <allowed_hosts/>
                     <snmpv3_contextname/>
@@ -294,7 +343,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>hue.temperature[{#HUE_ID}]</key>
-                            <delay>30</delay>
+                            <delay>300</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
