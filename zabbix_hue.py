@@ -84,17 +84,22 @@ def __connect(hostname=None, username=None):
         return zhue.Bridge.discover(username=u)
 
 
-def __print_hue_ids(hue_ids):
+def __print_hue_info(hue_devices):
     json_data = {'data':[]}
-    for hid in hue_ids:
-        json_data['data'].append({'{#HUE_ID}': hid})
+    for d in hue_devices:
+        json_data['data'].append(
+            {
+                '{#HUE_ID}': d.hue_id
+                # '{#HUE_NAME}': d.name
+            }
+        )
     print(json.dumps(json_data))
 
 
 def battery_discover():
     b = __connect()
-    hue_ids = [x.hue_id for x in b.sensors if hasattr(x.config, 'battery')]
-    return __print_hue_ids(hue_ids)
+    hue_devices = [x for x in b.sensors if hasattr(x.config, 'battery')]
+    return __print_hue_info(hue_devices)
 
 
 def battery_read(hue_id=None):
@@ -109,8 +114,8 @@ def battery_read(hue_id=None):
 
 def temperature_discover():
     b = __connect()
-    hue_ids = [x.hue_id for x in b.temperature_sensors]
-    return __print_hue_ids(hue_ids)
+    hue_devices = [x for x in b.temperature_sensors]
+    return __print_hue_info(hue_devices)
 
 
 def temperature_read(hue_id=None):
@@ -125,8 +130,8 @@ def temperature_read(hue_id=None):
 
 def light_level_discover():
     b = __connect()
-    hue_ids = [x.hue_id for x in b.light_level_sensors]
-    return __print_hue_ids(hue_ids)
+    hue_devices = [x for x in b.light_level_sensors]
+    return __print_hue_info(hue_devices)
 
 
 def light_level_read(hue_id=None):
