@@ -99,16 +99,16 @@ def __print_hue_info(hue_devices):
 
 def battery_discover():
     b = __connect()
-    hue_devices = [x for x in b.sensors if hasattr(x.config, 'battery')]
+    hue_devices = [x for x in b.devices if hasattr(x, 'battery')]
     return __print_hue_info(hue_devices)
 
 
 def battery_read(hue_id=None):
     b = __connect()
     if hue_id:
-        data = [b.sensor(hue_id=hue_id).config.battery]
+        data = [b.sensor(hue_id=hue_id).battery]
     else:
-        data = [x.config.battery for x in b.sensors if hasattr(x.config, 'battery')]
+        data = [x.battery for x in b.devices if hasattr(x, 'battery')]
     for d in data:
         print(d)
 
